@@ -1,3 +1,6 @@
 [submodule "data/markdown/gopl-zh"]
 	path = data/markdown/gopl-zh
 	url = https://github.com/admpub/gopl-zh
+[submodule "data/markdown/build-web-application-with-golang"]
+	path = data/markdown/build-web-application-with-golang
+	url = https://github.com/admpub/build-web-application-with-golang

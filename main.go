@@ -19,7 +19,7 @@ func main() {
 		Index:  `index.html`,
 		Browse: true,
 		Filter: func(name string) bool {
-			if name == `assert/` {
+			if name == `assert/` || (len(name) > 0 && name[0] == '.') {
 				return false
 			}
 			return true
