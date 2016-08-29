@@ -53,22 +53,7 @@
                 </div>
             </div>
         </div>
-<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript">
-$(function(){
-$('.catalog-list').load('SUMMARY.md',function(){
-    $('.catalog-list a').click(function(evt){
-        evt.preventDefault();
-        var that=$(this);
-        $('.catalog-list').find('a.current').removeClass('current');
-        $.get($(this).attr('href'),{},function(r){
-            $('.view-body').html(r);
-            that.addClass('current');
-        },'html');
-    });
-    $('.catalog-list a:first').trigger('click');
-});
-});
-</script>
+<script src=/assert/js/jquery.min.js" type="text/javascript"></script>
+<script src="/assert/js/init.js" type="text/javascript"></script>
     </body>
 </html>

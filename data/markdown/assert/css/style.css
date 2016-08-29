@@ -2105,7 +2105,7 @@ html pre.prettyprint:hover .m-copy-code {
 .m-manual.manual-reader .manual-head .slidebar {
     display: none;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 980px) {
 .m-manual.manual-reader {
     font-size: 12px;
     min-width: initial;
@@ -2209,6 +2209,7 @@ html pre.prettyprint:hover .m-copy-code {
 .m-manual.manual-reader.manual-mobile-show-left .manual-left {
     left: 0;
     z-index: 3001;
+    top:45px;
 }
 .m-manual.manual-reader.manual-mobile-show-left .manual-mask {
     opacity: 0.3;
