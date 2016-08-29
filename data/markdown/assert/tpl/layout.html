@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+        <link href="/favicon.ico" rel="shortcut icon">
+        <link href="/assert/css/style.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <div class="m-manual manual-reader manual-mode-view font-size-1 manual-active font-theme-2">
+            <div class="manual-head">
+                <div class="left">
+                    <span class="slidebar">
+                        <i class="icon-menu"></i>
+                    </span>
+                    <a title="返回首页" href="/"
+                    class="manual-title">
+                        <b class="text">{{title}}</b>
+                    </a>
+                </div>
+            </div>
+            <div class="manual-body">
+                <div class="manual-left">
+                    <div class="manual-tab">
+                        <div class="tab-wrap">
+                            <div class="tab-item manual-catalog">
+                                <div class="catalog-list read-book-preview" tabindex="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="manual-right">
+                    <div class="m-article">
+                        <div class="article-wrap">
+                            <div class="article-view">
+                                <div class="view-body think-editor-content">
+                                    loading...
+                                </div>
+                                <!-- <div class="view-foot">
+                                <div class="article-jump">
+                                <span class="jump-up" style="display: none;">上一篇：<a></a></span>
+                                <span class="jump-down">下一篇：<a href=""></a></span>
+                                </div>
+                                <a class="view-backtop"><i class="icon-arrow-up2"></i></a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script src="//cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+$('.catalog-list').load('SUMMARY.md',function(){
+    $('.catalog-list a').click(function(evt){
+        evt.preventDefault();
+        var that=$(this);
+        $('.catalog-list').find('a.current').removeClass('current');
+        $.get($(this).attr('href'),{},function(r){
+            $('.view-body').html(r);
+            that.addClass('current');
+        },'html');
+    });
+    $('.catalog-list a:first').trigger('click');
+});
+});
+</script>
+    </body>
+</html>
