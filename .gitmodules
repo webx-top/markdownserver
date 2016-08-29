@@ -4,3 +4,6 @@
 [submodule "data/markdown/build-web-application-with-golang"]
 	path = data/markdown/build-web-application-with-golang
 	url = https://github.com/admpub/build-web-application-with-golang
+[submodule "data/markdown/xorm-manual-zh-CN"]
+	path = data/markdown/xorm-manual-zh-CN
+	url = https://github.com/admpub/xorm-manual-zh-CN
