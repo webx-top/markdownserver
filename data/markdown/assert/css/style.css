@@ -846,7 +846,7 @@ input:disabled, textarea:disabled {
     padding: 3px 12px;
 }
 .think-editor-content tr:hover td {
-    background-color: #f1f1f1;
+    background-color: #2d3143;
 }
 .think-editor-content tr:first-child td:first-child {
     border-top-left-radius: 3px;
