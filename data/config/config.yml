@@ -1,0 +1,4 @@
+"/gopl-zh/" : {
+    include : true
+    image   : true
+}
