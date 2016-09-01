@@ -52,7 +52,7 @@ $('.catalog-list').load('SUMMARY.md',function(){
     });
     $('.catalog-list a').click(clickInnerlink);
     if(window.location.search){
-        var url=window.location.search.replace(/'"/g,'');
+        var url=window.location.search.replace(/'"/g,'')+window.location.hash;
         var a=$('.catalog-list a[href="'+url+'"]');
         if(a.length>0){
             a.trigger('click');
