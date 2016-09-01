@@ -5,7 +5,7 @@ function clickInnerlink(evt){
     }
     var that=$(evt.target);
     $('.catalog-list').find('a.current').removeClass('current');
-    $.get(that.attr('href'),{},function(r){
+    $.get(that.attr('data-url'),{},function(r){
         $('.view-body').html(r);
         $('.view-body a[href*="//"]').each(function(){
             $(this).attr('target','_blank');
@@ -45,7 +45,23 @@ function clickInbodylink(evt){
 }
 $(function(){
 $('.catalog-list').load('SUMMARY.md',function(){
+    $('.catalog-list a').each(function(){
+        var url=$(this).attr('href');
+        $(this).attr('href','?'+url);
+        $(this).attr('data-url',url);
+    });
     $('.catalog-list a').click(clickInnerlink);
+    if(window.location.search){
+        var url=window.location.search.replace(/'"/g,'');
+        var a=$('.catalog-list a[href="'+url+'"]');
+        if(a.length>0){
+            a.trigger('click');
+            
+            var scrollDiv=$('.manual-left .manual-catalog');
+            scrollDiv.animate({scrollTop: scrollDiv.scrollTop()+a.offset().top-100}, 500);
+            return;
+        }
+    }
     $('.catalog-list a:first').trigger('click');
 });
 $('.manual-head .slidebar .icon-menu').click(function(){
