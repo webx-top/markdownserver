@@ -7,3 +7,12 @@
 [submodule "data/markdown/xorm-manual-zh-CN"]
 	path = data/markdown/xorm-manual-zh-CN
 	url = https://github.com/admpub/xorm-manual-zh-CN
+[submodule "data/markdown/the-swift-programming-language-in-chinese"]
+	path = data/markdown/the-swift-programming-language-in-chinese
+	url = https://github.com/admpub/the-swift-programming-language-in-chinese
+
+[submodule "data/markdown/android-training-course-in-chinese"]
+
+	path = data/markdown/android-training-course-in-chinese
+	url = https://github.com/admpub/android-training-course-in-chinese
+

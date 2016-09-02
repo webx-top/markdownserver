@@ -55,7 +55,9 @@ function clickInbodylink(evt){
 }
 $(function(){
 window.JS_PATH=$('script[src$="/init.js"]:first').attr('src').split('/init.js')[0]+'/';
-$('.catalog-list').load('SUMMARY.md',function(){
+var url=$('.catalog-list').data('url');
+if(!url)url='SUMMARY.md';
+$('.catalog-list').load(url,function(){
     $('.catalog-list a').each(function(){
         var url=$(this).attr('href');
         $(this).attr('href','?'+url);
