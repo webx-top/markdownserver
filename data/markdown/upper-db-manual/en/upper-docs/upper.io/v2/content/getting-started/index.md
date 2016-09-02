@@ -11,16 +11,16 @@ databases and provides partial support (CRUD, no transactions) for
 [MongoDB][7].
 
 <center>
-![upper.io/db.v2 package](upper-docs/upper.io/v2/webroot/res/general.png)
+![upper.io/db.v2 package](../../webroot/res/general.png)
 </center>
 
 Coming from v1? we have a [migration
-guide](upper-docs/upper.io/v2/content/migrate-from-v1/index.md) that may come in handy.
+guide](../migrate-from-v1/index.md) that may come in handy.
 
 ## Key concepts
 
 <center>
-![Database](upper-docs/upper.io/v2/webroot/res/database.png)
+![Database](../../webroot/res/database.png)
 </center>
 
 A database connection is known as **session**. You can create a session by
@@ -76,7 +76,7 @@ The figure below ilustrates the session, collection, `Find()` and result set
 concepts:
 
 <center>
-![Collections](upper-docs/upper.io/v2/webroot/res/collection.png)
+![Collections](../../webroot/res/collection.png)
 </center>
 
 New items can be inserted into the collection by using `Insert()` or
@@ -112,7 +112,7 @@ err = tx.Rollback()
 ...
 ```
 
-Sessions also have a built-in SQLish [query builder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md) that gives
+Sessions also have a built-in SQLish [query builder](../lib/sqlbuilder/index.md) that gives
 more freedom than the sets while keeping manual SQL concatenation at bay.
 
 ```go
@@ -148,7 +148,7 @@ iter = sqlbuilder.NewIterator(sqlRows)
 err = iter.All(&item)
 ```
 
-See more code examples and patterns at our [examples](upper-docs/upper.io/v2/content/examples/index.md) page.
+See more code examples and patterns at our [examples](../examples/index.md) page.
 
 ## Installation
 
@@ -186,11 +186,11 @@ go build && go install
 Here's the list of currently supported adapters, make sure to read the
 instructions from the specific adapter for installation instructions:
 
-* [MySQL](upper-docs/upper.io/v2/content/mysql/index.md)
-* [MongoDB](upper-docs/upper.io/v2/content/mongo/index.md)
-* [PostgreSQL](upper-docs/upper.io/v2/content/postgresql/index.md)
-* [QL](upper-docs/upper.io/v2/content/ql/index.md)
-* [SQLite](upper-docs/upper.io/v2/content/sqlite/index.md)
+* [MySQL](../mysql/index.md)
+* [MongoDB](../mongo/index.md)
+* [PostgreSQL](../postgresql/index.md)
+* [QL](../ql/index.md)
+* [SQLite](../sqlite/index.md)
 
 ## Basic usage
 
@@ -625,7 +625,7 @@ type Point struct {
 The basic collection/result won't be appropriate for some situations, when this
 happens, you can use `db` as a simple bridge between SQL queries and Go types.
 
-SQL adapters come with a [SQL builder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md), try it and see if it
+SQL adapters come with a [SQL builder](../lib/sqlbuilder/index.md), try it and see if it
 fits your needs:
 
 ```go
@@ -668,7 +668,7 @@ err = iter.All(&accounts)
 ...
 ```
 
-See [SQL builder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md).
+See [SQL builder](../lib/sqlbuilder/index.md).
 
 ## Transactions
 
@@ -757,8 +757,8 @@ The MIT license:
 
 [1]: https://golang.org
 [2]: https://golang.org/doc/install
-[3]: upper-docs/upper.io/v2/content/mysql/index.md
-[4]: upper-docs/upper.io/v2/content/postgresql/index.md
-[5]: upper-docs/upper.io/v2/content/sqlite/index.md
-[6]: upper-docs/upper.io/v2/content/ql/index.md
-[7]: upper-docs/upper.io/v2/content/mongo/index.md
+[3]: ../mysql/index.md
+[4]: ../postgresql/index.md
+[5]: ../sqlite/index.md
+[6]: ../ql/index.md
+[7]: ../mongo/index.md

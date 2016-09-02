@@ -17,11 +17,12 @@ import (
 )
 
 var (
-	includeTag = regexp.MustCompile(`\{\%\s*include\s*"[^"]+"\s*\%\}`)
-	fileQuotes = regexp.MustCompile(`"([^"]+)"`)
-	fileRel    = regexp.MustCompile(`\([^\)]+\)`)
-	imgTag     = regexp.MustCompile(`\!\[[^\]]*\]\(\.\./[^\)]+\)`)
-	Parses     = map[string]*ParseSetting{}
+	includeTag   = regexp.MustCompile(`\{\%\s*include\s*"[^"]+"\s*\%\}`)
+	fileQuotes   = regexp.MustCompile(`"([^"]+)"`)
+	fileRel      = regexp.MustCompile(`\([^\)]+\)`)
+	imgTag       = regexp.MustCompile(`\!\[[^\]]*\]\(\.\./[^\)]+\)`)
+	imgTagCurDir = regexp.MustCompile(`\!\[[^\]]*\]\([^/][^\)]+\)`)
+	Parses       = map[string]*ParseSetting{}
 )
 
 type ParseSetting struct {
@@ -143,6 +144,20 @@ func main() {
 							fpath = path.Dir(fpath)
 							vs[0] = strings.Replace(vs[0], `../`, ``, 1)
 						}
+						fpath = path.Join(fpath, vs[0])
+						v = strings.Replace(v, orig, `(`+fpath+`)`, 1)
+					}
+					return v
+				})
+
+				s = imgTagCurDir.ReplaceAllStringFunc(s, func(v string) string {
+					vs := fileRel.FindAllString(v, 1)
+					if len(vs) > 0 && !strings.Contains(vs[0], `://`) {
+						orig := vs[0]
+						vs[0] = strings.TrimPrefix(vs[0], `(`)
+						vs[0] = strings.TrimSuffix(vs[0], `)`)
+						fpath := ppath
+						vs[0] = strings.TrimPrefix(vs[0], `./`)
 						fpath = path.Join(fpath, vs[0])
 						v = strings.Replace(v, orig, `(`+fpath+`)`, 1)
 					}

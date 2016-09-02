@@ -17,13 +17,13 @@ type Replace struct {
 }
 
 var replaces = []*Replace{
-/*
-	&Replace{` // import "upper.io/db.v2"`, ``, nil},
-	&Replace{`"upper.io/db.v2"`, `"github.com/webx-top/db"`, nil},
-	&Replace{`"upper.io/db.v2/`, `"github.com/webx-top/db/`, nil},
-*/
-	&Replace{``, `${1}upper-docs/upper.io/v2/content/$2/index.md$3`, regexp.MustCompile(`([\("\s])(?:https\://upper\.io)?/db\.v2/([^\)".\s]+)([\)"\s])`)},
-	&Replace{``, `${1}upper-docs/upper.io/v2/webroot/res/$2$3$4`, regexp.MustCompile(`([\("])/db\.v2/res/([^\)"]+)(\.png)([\)"])`)},
+	/*
+		&Replace{` // import "upper.io/db.v2"`, ``, nil},
+		&Replace{`"upper.io/db.v2"`, `"github.com/webx-top/db"`, nil},
+		&Replace{`"upper.io/db.v2/`, `"github.com/webx-top/db/`, nil},
+	*/
+	&Replace{``, `${1}../$2/index.md$3`, regexp.MustCompile(`([\("\s])(?:https\://upper\.io)?/db\.v2/([^\)".\s]+)([\)"\s])`)},
+	&Replace{``, `${1}../../webroot/res/$2$3$4`, regexp.MustCompile(`([\("])/db\.v2/res/([^\)"]+)(\.png)([\)"])`)},
 }
 
 func main() {

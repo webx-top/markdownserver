@@ -249,7 +249,7 @@ newID, err = col.Insert(map[string]interface{}{
 ### Inserting elements with the SQL builder
 
 If you rather not use collections, you can also use a SQLish syntax
-to [insert](upper-docs/upper.io/v2/content/lib/sqlbuilder#insert-statement/index.md) elements:
+to [insert](../lib/sqlbuilder#insert-statement/index.md) elements:
 
 ```
 q = sess.InsertInto("people").Columns("name").Values("John")
@@ -259,7 +259,7 @@ res, err = q.Exec() // res is a sql.Result
 ```
 
 This SQLish syntax is only available on SQL adapters. See [INSERT
-statement](upper-docs/upper.io/v2/content/lib/sqlbuilder#insert-statement/index.md).
+statement](../lib/sqlbuilder#insert-statement/index.md).
 
 ## Result sets
 
@@ -447,7 +447,7 @@ err = res.Update(map[string]interface{}{
 
 ### Updating with the SQL builder
 
-See [UPDATE statement](upper-docs/upper.io/v2/content/lib/sqlbuilder#update-statement/index.md):
+See [UPDATE statement](../lib/sqlbuilder#update-statement/index.md):
 
 ```
 q = sess.Update("people").Set("name", "John").Where("id = ?", 5)
@@ -478,7 +478,7 @@ err = res.Delete()
 
 ### Deleting with the SQL builder
 
-See [DELETE statement](upper-docs/upper.io/v2/content/lib/sqlbuilder#delete-statement/index.md):
+See [DELETE statement](../lib/sqlbuilder#delete-statement/index.md):
 
 ```go
 q = sess.DeleteFrom("accounts").Where("id", 5)
@@ -739,6 +739,6 @@ iter.All(&accounts)
 
 See [builder examples][2] to learn how to master the SQL query builder.
 
-[1]: upper-docs/upper.io/v2/content/getting-started/index.md
-[2]: upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md
-[3]: upper-docs/upper.io/v2/content/contribute/index.md
+[1]: ../getting-started/index.md
+[2]: ../lib/sqlbuilder/index.md
+[3]: ../contribute/index.md

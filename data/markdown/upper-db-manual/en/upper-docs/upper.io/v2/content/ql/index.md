@@ -192,7 +192,7 @@ Hironobu Sakaguchi was born in November 25, 1962.
 
 ### SQL builder
 
-You can use the [query builder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md) for any complex SQL query:
+You can use the [query builder](../lib/sqlbuilder/index.md) for any complex SQL query:
 
 ```go
 q := b.Select(

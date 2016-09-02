@@ -232,7 +232,7 @@ err = sqlbuilder.NewIterator(rows).All(&myRows)
 
 The sqlbuilder offers powerful tools and more flexibility when working with
 advanced SQL commands, see more examples at
-[upper.io/db.v2/lib/sqlbuilder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md).
+[upper.io/db.v2/lib/sqlbuilder](../lib/sqlbuilder/index.md).
 
 ## Result.OrderBy()
 

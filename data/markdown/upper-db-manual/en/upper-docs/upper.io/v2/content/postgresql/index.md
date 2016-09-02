@@ -218,7 +218,7 @@ JSON types area supported on PostgreSQL 9.4+.
 
 ### SQL builder
 
-You can use the [query builder](upper-docs/upper.io/v2/content/lib/sqlbuilder/index.md) for any complex SQL query:
+You can use the [query builder](../lib/sqlbuilder/index.md) for any complex SQL query:
 
 ```go
 q := sess.Select(

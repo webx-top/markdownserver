@@ -2,3 +2,11 @@
     include : true
     image   : true
 }
+
+"/upper-db-manual/" : {
+    image   : true
+}
+
+"/android-training-course-in-chinese/" : {
+    image   : true
+}
