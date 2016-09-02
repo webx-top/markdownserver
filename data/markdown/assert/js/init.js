@@ -1,3 +1,20 @@
+function setCookie(c_name,value,expiredays){
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+}
+function getCookie(c_name){
+    if(document.cookie.length>0){
+        c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1) { 
+            c_start=c_start + c_name.length+1 
+            c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        } 
+    }
+    return ""
+}
 function clickInnerlink(evt){
     evt.preventDefault();
     if($('.m-manual').hasClass('manual-mobile-show-left')){
@@ -6,6 +23,7 @@ function clickInnerlink(evt){
     var that=$(evt.target);
     $('.catalog-list').find('a.current').removeClass('current');
     $.get(that.attr('data-url'),{},function(r){
+        setCookie('lastVisited',that.attr('data-url'));
         $('.view-body').html(r);
         $('.view-body a[href*="//"]').each(function(){
             $(this).attr('target','_blank');
@@ -36,6 +54,7 @@ function clickInbodylink(evt){
         scrollDiv.animate({scrollTop: scrollDiv.scrollTop()+nav.offset().top-100}, 500);
     }
     $.get(url,{},function(r){
+        setCookie('lastVisited',url);
         $('.view-body').html(r);
         $('.view-body a[href*="//"]').each(function(){
             $(this).attr('target','_blank');
@@ -72,6 +91,19 @@ $('.catalog-list').load(url,function(){
             
             var scrollDiv=$('.manual-left .manual-catalog');
             scrollDiv.animate({scrollTop: scrollDiv.scrollTop()+a.offset().top-100}, 500);
+            return;
+        }
+    }else{
+        var lastVisitedURL=getCookie('lastVisited');
+        if(lastVisitedURL&&$('.catalog-list a[data-url="'+lastVisitedURL+'"]').length>0){
+            $('.catalog-list a[data-url="'+lastVisitedURL+'"]').trigger('click');
+            $('body').prepend('<div id="goto-last-visited-tips" style="position:absolute;right:0;border-radius:0 0 0 3px;padding:10px 20px;background:#2d3143;color:white;z-index:999">已经自动切换到您上次浏览的页面</div>');
+            window.setTimeout(function(){
+                $('#goto-last-visited-tips').fadeOut(500);
+            },5000);
+            $('#goto-last-visited-tips').click(function(){
+                $(this).hide();
+            });
             return;
         }
     }
