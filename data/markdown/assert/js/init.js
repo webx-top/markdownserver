@@ -23,7 +23,7 @@ function clickInnerlink(evt){
     var that=$(evt.target);
     $('.catalog-list').find('a.current').removeClass('current');
     $.get(that.attr('data-url'),{},function(r){
-        setCookie('lastVisited',that.attr('data-url'));
+        setCookie('lastVisited',that.attr('data-url'),365);
         $('.view-body').html(r);
         $('.view-body a[href*="//"]').each(function(){
             $(this).attr('target','_blank');
@@ -54,7 +54,7 @@ function clickInbodylink(evt){
         scrollDiv.animate({scrollTop: scrollDiv.scrollTop()+nav.offset().top-100}, 500);
     }
     $.get(url,{},function(r){
-        setCookie('lastVisited',url);
+        setCookie('lastVisited',url,365);
         $('.view-body').html(r);
         $('.view-body a[href*="//"]').each(function(){
             $(this).attr('target','_blank');
