@@ -25,9 +25,17 @@ var (
 	Parses       = map[string]*ParseSetting{}
 )
 
+type ReplaceSetting struct {
+	Old    string `json:"old"`
+	New    string `json:"new"`
+	Regexp string `json:"regexp"`
+	regexp *regexp.Regexp
+}
+
 type ParseSetting struct {
-	Include bool `json:"include"`
-	Image   bool `json:"image"`
+	Include bool              `json:"include"`
+	Image   bool              `json:"image"`
+	Replace []*ReplaceSetting `json:"replace"`
 }
 
 func main() {
@@ -163,6 +171,24 @@ func main() {
 					}
 					return v
 				})
+			}
+			if config.Replace != nil {
+				//自定义替换规则
+				for _, re := range config.Replace {
+					if len(re.Regexp) == 0 {
+						s = strings.Replace(s, re.Old, re.New, -1)
+					} else {
+						if re.regexp == nil {
+							var err error
+							re.regexp, err = regexp.Compile(re.Regexp)
+							if err != nil {
+								log.Error(err)
+								continue
+							}
+						}
+						s = re.regexp.ReplaceAllString(s, re.New)
+					}
+				}
 			}
 			return []byte(s)
 		}
