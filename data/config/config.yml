@@ -1,12 +1,12 @@
 "/gopl-zh/" : {
     include : true
-    image   : true
+    link    : true
 }
 
 "/upper-db-manual/" : {
-    image   : true
+    link    : true
 }
 
 "/android-training-course-in-chinese/" : {
-    image   : true
+    link   : true
 }

@@ -20,8 +20,10 @@ var (
 	includeTag   = regexp.MustCompile(`\{\%\s*include\s*"[^"]+"\s*\%\}`)
 	fileQuotes   = regexp.MustCompile(`"([^"]+)"`)
 	fileRel      = regexp.MustCompile(`\([^\)]+\)`)
-	imgTag       = regexp.MustCompile(`\!\[[^\]]*\]\(\.\./[^\)]+\)`)
-	imgTagCurDir = regexp.MustCompile(`\!\[[^\]]*\]\([^/][^\)]+\)`)
+	imgTag       = regexp.MustCompile(`\[[^\]]*\]\(\.\./[^\)]+\)`)
+	imgTagCurDir = regexp.MustCompile(`\[[^\]]*\]\([^/][^\)]+\)`)
+	linkNumber   = regexp.MustCompile(`\[[\d]+\]:[\s]+[^/][^\s]+[\s]`)
+	linkRel      = regexp.MustCompile(`[\s]([^/][^\s]+)[\s]`)
 	Parses       = map[string]*ParseSetting{}
 )
 
@@ -34,13 +36,13 @@ type ReplaceSetting struct {
 
 type ParseSetting struct {
 	Include bool              `json:"include"`
-	Image   bool              `json:"image"`
+	Link    bool              `json:"link"`
 	Replace []*ReplaceSetting `json:"replace"`
 }
 
 func main() {
 	port := flag.String(`p`, `8080`, `-p 8080`)
-	parse := flag.String(`parse`, `/gopl-zh/:include,image;`, `-parse "路径前缀:解析项目清单"`)
+	parse := flag.String(`parse`, `/gopl-zh/:include,link;`, `-parse "路径前缀:解析项目清单"`)
 	configFile := flag.String(`c`, `data/config/config.yml`, `-c data/config/config.yml`)
 	flag.Parse()
 
@@ -55,8 +57,8 @@ func main() {
 						c.Include = true
 						continue
 					}
-					if v == `image` {
-						c.Image = true
+					if v == `link` {
+						c.Link = true
 						continue
 					}
 				}
@@ -139,7 +141,7 @@ func main() {
 					return v
 				})
 			}
-			if config.Image {
+			if config.Link {
 				//修正markdown图片网址
 				s = imgTag.ReplaceAllStringFunc(s, func(v string) string {
 					vs := fileRel.FindAllString(v, 1)
@@ -168,6 +170,22 @@ func main() {
 						vs[0] = strings.TrimPrefix(vs[0], `./`)
 						fpath = path.Join(fpath, vs[0])
 						v = strings.Replace(v, orig, `(`+fpath+`)`, 1)
+					}
+					return v
+				})
+				s = linkNumber.ReplaceAllStringFunc(s, func(v string) string {
+					vs := linkRel.FindAllString(v, 1)
+					if len(vs) > 0 && !strings.Contains(vs[0], `://`) {
+						vs[0] = strings.TrimSpace(vs[0])
+						orig := vs[0]
+						fpath := ppath
+						for strings.Contains(vs[0], `../`) {
+							fpath = path.Dir(fpath)
+							vs[0] = strings.Replace(vs[0], `../`, ``, 1)
+						}
+						vs[0] = strings.TrimPrefix(vs[0], `./`)
+						fpath = path.Join(fpath, vs[0])
+						v = strings.Replace(v, orig, fpath, 1)
 					}
 					return v
 				})
