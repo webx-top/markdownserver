@@ -219,7 +219,7 @@ If you don't want to use `Scan` directly, you could always create an iterator
 using any `*sql.Rows` value:
 
 ```go
-import "github.com/webx-top/db/lib/sqlbuilder"
+import "upper.io/db.v2/lib/sqlbuilder"
 ...
 
 rows, err = sess.Query(`SELECT * FROM accounts WHERE last_name = ?`, "Smith")
@@ -309,7 +309,7 @@ Remember that if you want to use `db.Cond` you'll need to import
 `upper.io/db.v2` into your app:
 
 ```go
-import "github.com/webx-top/db"
+import "upper.io/db.v2"
 ```
 
 [1]: https://golang.org

@@ -28,7 +28,7 @@ importing the adapter package and using the `Open()` function that every
 adapter provides:
 
 ```
-import "github.com/webx-top/db/postgresql" // The PostgreSQL adapter
+import "upper.io/db.v2/postgresql" // The PostgreSQL adapter
 ...
 
 settings = postgresql.ConnectionURL{...} // Connection settings
@@ -140,7 +140,7 @@ err = sqlRows.Scan(&a, &b, ...)
 // a struct
 
 // Just make sure you're importing the `sqlbuilder` package:
-import "github.com/webx-top/db/lib/sqlbuilder"
+import "upper.io/db.v2/lib/sqlbuilder"
 ...
 
 // And create a new Iterator with any *sql.Rows object:
@@ -266,7 +266,7 @@ Import the adapter package into your application:
 
 ```go
 import (
-  "github.com/webx-top/db/postgresql" // PostgreSQL package
+  "upper.io/db.v2/postgresql" // PostgreSQL package
 )
 ```
 
@@ -656,7 +656,7 @@ SQL queries like the above can also be mapped to Go structs by using an
 iterator:
 
 ```go
-import "github.com/webx-top/db/lib/sqlbuilder"
+import "upper.io/db.v2/lib/sqlbuilder"
 ...
 
 rows, err = sess.Query(`SELECT * FROM accounts WHERE last_name = ?`, "Smith")

@@ -55,7 +55,7 @@ Import the `upper.io/db.v2/postgresql` package into your application:
 package main
 
 import (
-  "github.com/webx-top/db/postgresql"
+  "upper.io/db.v2/postgresql"
 )
 ```
 
@@ -107,7 +107,7 @@ import (
   "log"
   "time"
 
-  "github.com/webx-top/db/postgresql"
+  "upper.io/db.v2/postgresql"
 )
 
 var settings = postgresql.ConnectionURL{

@@ -75,7 +75,7 @@ Import the `upper.io/db.v2/sqlite` package into your application:
 package main
 
 import (
-  "github.com/webx-top/db/sqlite"
+  "upper.io/db.v2/sqlite"
 )
 ```
 
@@ -125,7 +125,7 @@ import (
   "fmt"
   "log"
   "time"
-  "github.com/webx-top/db/sqlite"
+  "upper.io/db.v2/sqlite"
 )
 
 var settings = sqlite.ConnectionURL{

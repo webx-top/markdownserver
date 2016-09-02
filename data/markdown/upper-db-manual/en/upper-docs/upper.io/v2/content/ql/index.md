@@ -52,7 +52,7 @@ Import the `upper.io/db.v2/ql` package into your application:
 package main
 
 import (
-  "github.com/webx-top/db/ql"
+  "upper.io/db.v2/ql"
 )
 ```
 
@@ -102,7 +102,7 @@ import (
   "fmt"
   "log"
   "time"
-  "github.com/webx-top/db/ql"
+  "upper.io/db.v2/ql"
 )
 
 var settings = ql.ConnectionURL{

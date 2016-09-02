@@ -23,7 +23,7 @@ The import path was changed from `upper.io/db` into `upper.io/db.v2`.
 ```go
 import (
   ...
-  "github.com/webx-top/db"
+  "upper.io/db.v2"
   ...
 )
 ```
@@ -221,7 +221,7 @@ You can also use
 
 ```go
 import (
-  "github.com/webx-top/db/lib/sqlbuilder"
+  "upper.io/db.v2/lib/sqlbuilder"
 )
 
 ...
@@ -263,7 +263,7 @@ function run within a transaction:
 
 ```go
 import (
-  "github.com/webx-top/db/lib/sqlbuilder"
+  "upper.io/db.v2/lib/sqlbuilder"
 )
 
 err = sess.Tx(func(tx sqlbuilder.Tx) error {

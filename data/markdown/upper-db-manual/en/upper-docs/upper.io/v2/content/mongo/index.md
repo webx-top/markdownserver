@@ -61,7 +61,7 @@ Import the `upper.io/db.v2/mongo` package into your application:
 package main
 
 import (
-  "github.com/webx-top/db/mongo"
+  "upper.io/db.v2/mongo"
 )
 ```
 
@@ -93,7 +93,7 @@ import (
   "log"
   "time"
 
-  "github.com/webx-top/db/mongo"
+  "upper.io/db.v2/mongo"
 )
 
 var settings = mongo.ConnectionURL{

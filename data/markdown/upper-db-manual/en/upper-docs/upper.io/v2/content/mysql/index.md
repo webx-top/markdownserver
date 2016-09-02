@@ -55,7 +55,7 @@ Import the `upper.io/db.v2/mysql` package into your application:
 package main
 
 import (
-  "github.com/webx-top/db/mysql"
+  "upper.io/db.v2/mysql"
 )
 ```
 
@@ -106,7 +106,7 @@ import (
   "fmt"
   "log"
   "time"
-  "github.com/webx-top/db/mysql"   // Imports the mysql adapter.
+  "upper.io/db.v2/mysql"   // Imports the mysql adapter.
 )
 
 var settings = mysql.ConnectionURL{

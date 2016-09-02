@@ -129,7 +129,7 @@ parameters to open a database:
 ```go
 import (
   ...
-  "github.com/webx-top/db/postgresql"
+  "upper.io/db.v2/postgresql"
   ...
 )
 
@@ -166,7 +166,7 @@ into a `ConnectionURL` struct and use it to connect to a database by using the
 ```go
 import (
   ...
-  "github.com/webx-top/db/postgresql"
+  "upper.io/db.v2/postgresql"
   ...
 )
 
@@ -594,8 +594,8 @@ You can create and use transaction blocks with the `Tx` method:
 ```go
 import (
   "log"
-  "github.com/webx-top/db"
-  "github.com/webx-top/db/lib/sqlbuilder"
+  "upper.io/db.v2"
+  "upper.io/db.v2/lib/sqlbuilder"
 )
 
 func main() {
