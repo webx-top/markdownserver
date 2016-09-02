@@ -1,5 +1,6 @@
 @charset "UTF-8";
-
+@import url("../js/codeHighlight/loader/prettify.css");
+@import url("../js/codeHighlight/loader/skins/sunburst.css");
 @font-face {
     font-family: 'icomoon';
     src:    url('fonts/icomoon.eot?wa5uht');
@@ -818,7 +819,7 @@ input:disabled, textarea:disabled {
     border: 0 none;
     border-radius: 3px;
     font-family: Consolas,"Liberation Mono",Menlo,Courier,monospace;
-    font-size: 85%;
+    font-size: 100%;
     line-height: 1.45;
     overflow: auto;
     padding: 16px;
