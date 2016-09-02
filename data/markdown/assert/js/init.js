@@ -23,7 +23,7 @@ function clickInnerlink(evt){
 function clickInbodylink(evt){
     evt.preventDefault();
     var url=$(evt.target).attr('href');
-    var nav=$('.catalog-list').find('a[href="'+url+'"]');
+    var nav=$('.catalog-list').find('a[data-url="'+url+'"]');
     if(nav.length>0){
         $('.catalog-list').find('a.current').removeClass('current');
         nav.addClass('current');
