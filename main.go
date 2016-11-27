@@ -10,10 +10,10 @@ import (
 
 	"github.com/admpub/confl"
 	"github.com/admpub/log"
+	"github.com/webx-top/com"
 	"github.com/webx-top/echo"
 	"github.com/webx-top/echo/middleware/markdown"
 	X "github.com/webx-top/webx"
-	"github.com/webx-top/webx/lib/com"
 )
 
 var (
@@ -75,7 +75,7 @@ func main() {
 				log.Error(err)
 			}
 		}
-		actions := com.MonitorEventFunc{
+		actions := &com.MonitorEvent{
 			Modify: func(name string) {
 				log.Info(`Reload ` + *configFile)
 				Parses = map[string]*ParseSetting{}
