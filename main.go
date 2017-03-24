@@ -213,7 +213,7 @@ func main() {
 		return b
 	}
 	server := X.Serv()
-	server.Use(markdown.Markdown(markdownOptions))
+	server.Core.Use(markdown.Markdown(markdownOptions))
 
 	X.Run(`:` + *port)
 }
