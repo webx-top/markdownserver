@@ -1,0 +1,12 @@
+.play a.run,
+.play a.run:active,
+.play a.run:link,
+.play a.run:visited {
+  color: #e74039;
+}
+.exampleHeading {
+  font-weight: bold;
+}
+.play {
+  overflow: auto;
+}

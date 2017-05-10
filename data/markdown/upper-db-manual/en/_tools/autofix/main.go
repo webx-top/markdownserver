@@ -22,14 +22,14 @@ var replaces = []*Replace{
 		&Replace{`"upper.io/db.v2"`, `"github.com/webx-top/db"`, nil},
 		&Replace{`"upper.io/db.v2/`, `"github.com/webx-top/db/`, nil},
 	*/
-	&Replace{``, `${1}../$2/index.md$3`, regexp.MustCompile(`([\("\s])(?:https\://upper\.io)?/db\.v2/([^\)".\s]+)([\)"\s])`)},
-	&Replace{``, `${1}../../webroot/res/$2$3$4`, regexp.MustCompile(`([\("])/db\.v2/res/([^\)"]+)(\.png)([\)"])`)},
+	&Replace{``, `${1}../$2/index.md$3`, regexp.MustCompile(`([\("\s])(?:https\://upper\.io)?/db\.v[\d]/([^\)".\s]+)([\)"\s])`)},
+	&Replace{``, `${1}../../webroot/res/$2$3$4`, regexp.MustCompile(`([\("])/db\.v[\d]/res/([^\)"]+)(\.png)([\)"])`)},
 }
 
 func main() {
-	root := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/admpub/upper-db-manual/upper-docs/upper.io/v2/content`)
-	//root := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/webx-top/markdownserver/data/markdown/upper-db-manual/en/upper-docs/upper.io/v2/content`)
-	save := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/webx-top/markdownserver/data/markdown/upper-db-manual/en/upper-docs/upper.io/v2/content`)
+	root := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/admpub/upper-db-manual/upper-docs/upper.io/v3/content`)
+	//root := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/webx-top/markdownserver/data/markdown/upper-db-manual/en/upper-docs/upper.io/v3/content`)
+	save := filepath.Join(os.Getenv(`GOPATH`), `src`, `github.com/webx-top/markdownserver/data/markdown/upper-db-manual/en/upper-docs/upper.io/v3/content`)
 
 	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
 		if info.IsDir() {
