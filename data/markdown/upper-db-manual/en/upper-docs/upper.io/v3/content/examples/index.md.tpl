@@ -397,7 +397,7 @@ You can update all rows on the result set with the `Update()` method.
 var account Account
 res = col.Find("id", 5) // WHERE id = 5
 
-err = col.One(account)
+err = res.One(account)
 ...
 
 account.Name = "New name"
@@ -593,14 +593,18 @@ You can create and use transaction blocks with the `Tx` method:
 
 ```go
 import (
+  "context"
   "log"
+
   "upper.io/db.v3"
   "upper.io/db.v3/lib/sqlbuilder"
 )
 
 func main() {
   ...
-  err := sess.Tx(func(tx sqlbuilder.Tx) error {
+  // The first argument for Tx() is either nil or a context.Context type.
+  // Use nil if you want the session's default context to be used.
+  err := sess.Tx(context.Background(), func(tx sqlbuilder.Tx) error {
     // Use `tx` like you would normally use `sess`.
     ...
     id, err := tx.Collection("accounts").Insert(...)
@@ -622,14 +626,16 @@ func main() {
 }
 ```
 
+If you want to know more about the context Tx requires see:
+https://golang.org/pkg/context/
 
 ### Manual transactions
 
 Alternatively, you can also request a transaction context and manage it
-yourself using the `NewTx()` method:
+yourself using the `NewTx` method:
 
 ```go
-tx, err := sess.NewTx()
+tx, err := sess.NewTx(ctx)
 ...
 ```
 
@@ -681,11 +687,7 @@ see the generated SQL queries and the result from their execution printed to
 	Rows affected:  0
 	Time taken:     0.01813s
 
-2016/10/04 19:14:28
-	Session ID:     00003
-	Query:          INSERT INTO "option_types" ("name", "settings", "tags") VALUES ($1, $2, $3) RETURNING "id"
-	Arguments:      []interface {}{"Hi", sqlbuilder.jsonbType{V:postgresql.Settings{Name:"a", Num:123}}, sqlbuilder.stringArray{"aah", "ok"}}
-	Time taken:     0.00202s
+...
 ```
 
 Besides the `UPPERIO_DB_DEBUG` env, you can enable or disable the built-in
